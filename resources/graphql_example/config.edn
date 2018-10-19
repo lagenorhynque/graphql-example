@@ -1,0 +1,55 @@
+{:duct.core/project-ns  graphql-example
+ :duct.core/environment :production
+
+ :duct.module/logging {}
+
+ ;; :duct.module/sql {}
+
+ ;; Consumed by graphql-example.server/create-server
+ ;; See http/default-interceptors for additional options you can configure
+ :graphql-example.server/service
+ #:io.pedestal.http
+ {;; You can bring your own non-default interceptors. Make
+  ;; sure you include routing and set it up right for
+  ;; dev-mode. If you do, many other keys for configuring
+  ;; default interceptors will be ignored.
+  ;; :interceptors []
+  ;; Routes can be a function that resolve routes,
+  ;;  we can use this to set the routes to be reloadable
+  ;; :routes #ig/ref :graphql-example.routes/routes
+
+  ;; Uncomment next line to enable CORS support, add
+  ;; string(s) specifying scheme, host and port for
+  ;; allowed source(s):
+  ;;
+  ;; "http://localhost:8080"
+  ;;
+  ;; :allowed-origins ["scheme://host:port"]
+
+  ;; Tune the Secure Headers
+  ;; and specifically the Content Security Policy appropriate to your service/application
+  ;; For more information, see: https://content-security-policy.com/
+  ;;   See also: https://github.com/pedestal/pedestal/issues/499
+  ;; :secure-headers {:content-security-policy-settings {:object-src "'none'"
+  ;;                                                     :script-src "'unsafe-inline' 'unsafe-eval' 'strict-dynamic' https: http:"
+  ;;                                                     :frame-ancestors "'none'"}}
+
+  ;; Root for resource interceptor that is available by default.
+  :resource-path "/public"
+
+  ;; Either :jetty, :immutant or :tomcat (see comments in project.clj)
+  ;;  This can also be your own chain provider/server-fn -- http://pedestal.io/reference/architecture-overview#_chain_provider
+  :type :jetty
+  :host #duct/env "SERVER_HOST"
+  :port #duct/env ["SERVER_PORT" Int :or 9090]
+  ;; Options to pass to the container (Jetty)
+  :container-options {:h2c? true
+                      :h2? false
+                      ;; :keystore "test/hp/keystore.jks"
+                      ;; :key-password "password"
+                      ;; :ssl-port 8443
+                      :ssl? false}}
+
+ [:duct/server :graphql-example.server/server]
+ {:service #ig/ref :graphql-example.server/service
+  :dev? false}}
