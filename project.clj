@@ -3,20 +3,18 @@
   :url "http://example.com/FIXME"
   :min-lein-version "2.0.0"
   :dependencies [[camel-snake-kebab "0.4.0"]
-                 [ch.qos.logback/logback-classic "1.2.3" :exclusions [org.slf4j/slf4j-api]]
                  [clojure.java-time "0.3.2"]
                  [com.walmartlabs/lacinia "0.30.0"]
                  [com.walmartlabs/lacinia-pedestal "0.10.0" :exclusions [org.clojure/tools.reader]]
+                 [duct.module.pedestal "0.2.0" :exclusions [io.pedestal/pedestal.jetty
+                                                            io.pedestal/pedestal.service]]
                  [duct/core "0.6.2"]
                  [duct/database.sql.hikaricp "0.3.3" :exclusions [integrant]]
                  [duct/module.logging "0.3.1"]
                  [duct/module.sql "0.4.2"]
                  [honeysql "0.9.4"]
-                 [mysql/mysql-connector-java "8.0.12"]
-                 [org.clojure/clojure "1.9.0"]
-                 [org.slf4j/jcl-over-slf4j "1.7.25"]
-                 [org.slf4j/jul-to-slf4j "1.7.25"]
-                 [org.slf4j/log4j-over-slf4j "1.7.25"]]
+                 [mysql/mysql-connector-java "8.0.13"]
+                 [org.clojure/clojure "1.9.0"]]
   :plugins [[duct/lein-duct "0.10.6"]]
   :main ^:skip-aot graphql-example.main
   :resource-paths ["resources" "target/resources"]

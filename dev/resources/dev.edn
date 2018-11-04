@@ -3,11 +3,4 @@
 
  ;; :duct.module/sql
  ;; {:database-url ""}
-
- :graphql-example.server/service
- #:io.pedestal.http{;; do not block thread that starts web server
-                    :join? false
-                    ;; Content Security Policy (CSP) is mostly turned off in dev mode
-                    :secure-headers {:content-security-policy-settings {:object-src "'none'"}}}
-
- :graphql-example.server/server {:dev? true}}
+ }
