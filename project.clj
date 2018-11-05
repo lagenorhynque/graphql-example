@@ -6,7 +6,7 @@
                  [clojure.java-time "0.3.2"]
                  [com.walmartlabs/lacinia "0.30.0"]
                  [com.walmartlabs/lacinia-pedestal "0.10.0" :exclusions [org.clojure/tools.reader]]
-                 [duct.module.pedestal "0.2.0" :exclusions [io.pedestal/pedestal.jetty
+                 [duct.module.pedestal "0.3.0" :exclusions [io.pedestal/pedestal.jetty
                                                             io.pedestal/pedestal.service]]
                  [duct/core "0.6.2"]
                  [duct/database.sql.hikaricp "0.3.3" :exclusions [integrant]]
