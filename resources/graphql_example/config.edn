@@ -3,12 +3,23 @@
 
  :duct.module/logging {}
 
- ;; :duct.module/sql {}
+ ;; :duct.module/sql
+ ;; {:database-url #duct/env "DATABASE_URL"}
 
  :duct.module/pedestal {}
  :duct.server/pedestal
  {:base-service #ig/ref :graphql-example.graphql/service
-  :service #:io.pedestal.http{:host #duct/env "SERVER_HOST"
+  :service #:io.pedestal.http{:join? true
+                              :host #duct/env "SERVER_HOST"
                               :port #duct/env ["SERVER_PORT" Int :or 9090]}}
 
- :graphql-example.graphql/service {}}
+ :graphql-example.graphql/schema
+ {:example-db #ig/ref :graphql-example.boundary.db.example-db/db}
+
+ :graphql-example.graphql/service
+ {:schema #ig/ref :graphql-example.graphql/schema
+  :options {:graphiql true
+            :app-context {}
+            :env :prod}}
+
+ :graphql-example.boundary.db.example-db/db {}}

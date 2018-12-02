@@ -3,4 +3,9 @@
 
  ;; :duct.module/sql
  ;; {:database-url ""}
- }
+
+ :duct.server/pedestal
+ {:service #:io.pedestal.http{:join? false}}
+
+ :graphql-example.graphql/service
+ {:options {:env :dev}}}

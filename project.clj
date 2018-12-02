@@ -20,16 +20,30 @@
   :resource-paths ["resources" "target/resources"]
   :prep-tasks     ["javac" "compile" ["run" ":duct/compiler"]]
   :profiles
-  {:dev  [:project/dev :profiles/dev]
-   :repl {:prep-tasks   ^:replace ["javac" "compile"]
+  {:repl {:prep-tasks   ^:replace ["javac" "compile"]
           :repl-options {:init-ns user}}
-   :uberjar {:aot :all}
-   :profiles/dev {}
+   :dev  [:shared :project/dev :profiles/dev]
+   :test [:shared :project/dev :project/test :profiles/test]
+   :uberjar [:shared :project/uberjar]
+
+   :shared {}
    :project/dev  {:source-paths   ["dev/src"]
                   :resource-paths ["dev/resources"]
-                  :dependencies   [[com.bhauman/rebel-readline "0.1.4"]
+                  :dependencies   [[clj-http "3.9.1"]
+                                   [com.bhauman/rebel-readline "0.1.4"]
+                                   [com.gearswithingears/shrubbery "0.4.1"]
                                    [eftest "0.5.3"]
                                    [integrant/repl "0.3.1" :exclusions [integrant]]
-                                   [kerodon "0.9.0"]]
+                                   [orchestra "2018.11.07-1"]
+                                   [pjstadig/humane-test-output "0.9.0"]
+                                   [vincit/venia "0.2.5"]]
                   :aliases {"rebel" ^{:doc "Run REPL with rebel-readline."}
-                            ["trampoline" "run" "-m" "rebel-readline.main"]}}})
+                            ["trampoline" "run" "-m" "rebel-readline.main"]}
+                  :injections [(require 'pjstadig.humane-test-output)
+                               (pjstadig.humane-test-output/activate!)]}
+   :project/test {}
+   :project/uberjar {:aot :all
+                     :uberjar-name "graphql-example.jar"}
+
+   :profiles/dev {}
+   :profiles/test {}})

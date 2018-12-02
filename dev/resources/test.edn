@@ -1,0 +1,8 @@
+{:duct.core/environment :development
+ :duct.core/include ["dev"]
+
+ ;; :duct.module/sql
+ ;; {:database-url #duct/env ["TEST_DATABASE_URL" :or ""]}
+
+ :duct.server/pedestal
+ {:service #:io.pedestal.http{:port 9091}}}
