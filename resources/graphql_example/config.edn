@@ -13,13 +13,12 @@
                               :host #duct/env "SERVER_HOST"
                               :port #duct/env ["SERVER_PORT" Int :or 9090]}}
 
- :graphql-example.graphql/schema
- {:example-db #ig/ref :graphql-example.boundary.db.example-db/db}
+ :graphql-example.graphql/schema {}
 
  :graphql-example.graphql/service
  {:schema #ig/ref :graphql-example.graphql/schema
   :options {:graphiql true
-            :app-context {}
+            :app-context {:db #ig/ref :graphql-example.boundary.db.example-db/db}
             :env :prod}}
 
  :graphql-example.boundary.db.example-db/db {}}

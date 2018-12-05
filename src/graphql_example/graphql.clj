@@ -7,23 +7,22 @@
             [graphql-example.resolver.clojure-game-geek :as clojure-game-geek]
             [integrant.core :as ig]))
 
-(defn resolver-map
-  [example-db]
-  {:query/game-by-id (clojure-game-geek/game-by-id example-db)
-   :query/member-by-id (clojure-game-geek/member-by-id example-db)
-   :mutation/rate-game (clojure-game-geek/rate-game example-db)
-   :BoardGame/rating-summary (clojure-game-geek/rating-summary example-db)
-   :BoardGame/designers (clojure-game-geek/board-game-designers example-db)
-   :Member/ratings (clojure-game-geek/member-ratings example-db)
-   :GameRating/game (clojure-game-geek/game-rating->game example-db)
-   :Designer/games (clojure-game-geek/designer-games example-db)})
+(def resolver-map
+  {:query/game-by-id clojure-game-geek/game-by-id
+   :query/member-by-id clojure-game-geek/member-by-id
+   :mutation/rate-game clojure-game-geek/rate-game
+   :BoardGame/rating-summary clojure-game-geek/rating-summary
+   :BoardGame/designers clojure-game-geek/board-game-designers
+   :Member/ratings clojure-game-geek/member-ratings
+   :GameRating/game clojure-game-geek/game-rating->game
+   :Designer/games clojure-game-geek/designer-games})
 
 (defmethod ig/init-key ::schema
-  [_ {:keys [example-db]}]
+  [_ _]
   (-> (io/resource "graphql_example/graphql-schema.edn")
       slurp
       edn/read-string
-      (util/attach-resolvers (resolver-map example-db))
+      (util/attach-resolvers resolver-map)
       schema/compile))
 
 (defmethod ig/init-key ::service
