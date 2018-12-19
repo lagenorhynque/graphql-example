@@ -6,7 +6,7 @@
                  [clojure.java-time "0.3.2"]
                  [com.walmartlabs/lacinia "0.30.0"]
                  [com.walmartlabs/lacinia-pedestal "0.10.0" :exclusions [org.clojure/tools.reader]]
-                 [duct.module.pedestal "0.3.0" :exclusions [io.pedestal/pedestal.jetty
+                 [duct.module.pedestal "1.0.0" :exclusions [io.pedestal/pedestal.jetty
                                                             io.pedestal/pedestal.service]]
                  [duct/core "0.6.2"]
                  [duct/database.sql.hikaricp "0.3.3" :exclusions [integrant]]
@@ -32,9 +32,9 @@
                   :dependencies   [[clj-http "3.9.1"]
                                    [com.bhauman/rebel-readline "0.1.4"]
                                    [com.gearswithingears/shrubbery "0.4.1"]
-                                   [eftest "0.5.3"]
+                                   [eftest "0.5.4"]
                                    [integrant/repl "0.3.1" :exclusions [integrant]]
-                                   [orchestra "2018.11.07-1"]
+                                   [orchestra "2018.12.06-2"]
                                    [pjstadig/humane-test-output "0.9.0"]
                                    [vincit/venia "0.2.5"]]
                   :aliases {"rebel" ^{:doc "Run REPL with rebel-readline."}
