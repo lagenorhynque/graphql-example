@@ -12,6 +12,7 @@
                  [duct/database.sql.hikaricp "0.3.3" :exclusions [integrant]]
                  [duct/module.logging "0.3.1"]
                  [duct/module.sql "0.4.2"]
+                 [fipp "0.6.14"]
                  [honeysql "0.9.4"]
                  [mysql/mysql-connector-java "8.0.13"]
                  [org.clojure/clojure "1.9.0"]]
