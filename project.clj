@@ -15,7 +15,8 @@
                  [fipp "0.6.14"]
                  [honeysql "0.9.4"]
                  [mysql/mysql-connector-java "8.0.13"]
-                 [org.clojure/clojure "1.9.0"]]
+                 [org.clojure/clojure "1.10.0"]
+                 [org.flatland/ordered "1.5.7"]]
   :plugins [[duct/lein-duct "0.10.6"]]
   :main ^:skip-aot graphql-example.main
   :resource-paths ["resources" "target/resources"]
