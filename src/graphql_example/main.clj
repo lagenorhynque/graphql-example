@@ -1,12 +1,12 @@
 (ns graphql-example.main
   (:gen-class)
-  (:require [clojure.java.io :as io]
-            [duct.core :as duct]))
+  (:require [duct.core :as duct]))
 
 (duct/load-hierarchy)
 
 (defn -main [& args]
-  (let [keys (or (duct/parse-keys args) [:duct/daemon])]
-    (-> (duct/read-config (io/resource "graphql_example/config.edn"))
-        (duct/prep keys)
-        (duct/exec keys))))
+  (let [keys     (or (duct/parse-keys args) [:duct/daemon])
+        profiles [:duct.profile/prod]]
+    (-> (duct/resource "graphql_example/config.edn")
+        duct/read-config
+        (duct/exec-config profiles keys))))

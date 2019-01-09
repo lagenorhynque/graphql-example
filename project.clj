@@ -1,23 +1,20 @@
 (defproject graphql-example "0.1.0-SNAPSHOT"
   :description "FIXME: write description"
   :url "http://example.com/FIXME"
-  :min-lein-version "2.0.0"
+  :min-lein-version "2.8.1"
   :dependencies [[camel-snake-kebab "0.4.0"]
                  [clojure.java-time "0.3.2"]
-                 [com.walmartlabs/lacinia "0.30.0"]
-                 [com.walmartlabs/lacinia-pedestal "0.10.0" :exclusions [org.clojure/tools.reader]]
-                 [duct.module.pedestal "1.0.0" :exclusions [io.pedestal/pedestal.jetty
-                                                            io.pedestal/pedestal.service]]
-                 [duct/core "0.6.2"]
-                 [duct/database.sql.hikaricp "0.3.3" :exclusions [integrant]]
-                 [duct/module.logging "0.3.1"]
-                 [duct/module.sql "0.4.2"]
-                 [fipp "0.6.14"]
+                 [com.walmartlabs/lacinia-pedestal "0.11.0"]
+                 [duct.module.pedestal "2.0.0"]
+                 [duct/core "0.7.0"]
+                 [duct/module.logging "0.4.0"]
+                 [duct/module.sql "0.5.0"]
                  [honeysql "0.9.4"]
+                 [io.pedestal/pedestal.jetty "0.5.5"]
+                 [io.pedestal/pedestal.service "0.5.5"]
                  [mysql/mysql-connector-java "8.0.13"]
-                 [org.clojure/clojure "1.10.0"]
-                 [org.flatland/ordered "1.5.7"]]
-  :plugins [[duct/lein-duct "0.10.6"]]
+                 [org.clojure/clojure "1.10.0"]]
+  :plugins [[duct/lein-duct "0.11.1"]]
   :main ^:skip-aot graphql-example.main
   :resource-paths ["resources" "target/resources"]
   :prep-tasks     ["javac" "compile" ["run" ":duct/compiler"]]

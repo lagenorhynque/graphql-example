@@ -19,8 +19,9 @@
 ;;; macros for testing context
 
 (defn test-system []
-  (-> (duct/read-config (io/resource "test.edn"))
-      duct/prep))
+  (-> (io/resource "graphql_example/config.edn")
+      duct/read-config
+      (duct/prep-config [:duct.profile/dev :duct.profile/test])))
 
 (s/fdef with-system
   :args (s/cat :binding (s/coll-of any?

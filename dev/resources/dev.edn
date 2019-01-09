@@ -1,8 +1,7 @@
 {:duct.core/environment :development
- :duct.core/include ["graphql_example/config"]
 
- ;; :duct.module/sql
- ;; {:database-url ""}
+ ;; :duct.database.sql/hikaricp
+ ;; {:jdbc-url ""}
 
  :duct.server/pedestal
  {:service #:io.pedestal.http{:join? false}}

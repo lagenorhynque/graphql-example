@@ -20,7 +20,7 @@
 (duct/load-hierarchy)
 
 (defn read-config []
-  (duct/read-config (io/resource "dev.edn")))
+  (duct/read-config (io/resource "graphql_example/config.edn")))
 
 (defn reset []
   (let [result (integrant.repl/reset)]
@@ -60,4 +60,7 @@
 (when (io/resource "local.clj")
   (load "local"))
 
-(integrant.repl/set-prep! (comp duct/prep read-config))
+(def profiles
+  [:duct.profile/dev :duct.profile/local])
+
+(integrant.repl/set-prep! #(duct/prep-config (read-config) profiles))
