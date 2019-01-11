@@ -14,7 +14,8 @@
                  [io.pedestal/pedestal.service "0.5.5"]
                  [mysql/mysql-connector-java "8.0.13"]
                  [org.clojure/clojure "1.10.0"]]
-  :plugins [[duct/lein-duct "0.11.1"]]
+  :plugins [[duct/lein-duct "0.11.2"]]
+  :middleware [lein-duct.plugin/middleware]
   :main ^:skip-aot graphql-example.main
   :resource-paths ["resources" "target/resources"]
   :prep-tasks     ["javac" "compile" ["run" ":duct/compiler"]]
