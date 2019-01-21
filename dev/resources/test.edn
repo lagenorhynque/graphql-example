@@ -1,6 +1,4 @@
-{:duct.core/environment :development
-
- ;; :duct.database.sql/hikaricp
+{;; :duct.database.sql/hikaricp
  ;; {:jdbc-url #duct/env ["TEST_DATABASE_URL" :or ""]}
 
  :duct.server/pedestal

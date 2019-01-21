@@ -1,6 +1,4 @@
-{:duct.core/environment :development
-
- ;; :duct.database.sql/hikaricp
+{;; :duct.database.sql/hikaricp
  ;; {:jdbc-url ""}
 
  :duct.server/pedestal
