@@ -40,9 +40,10 @@
 ;;; GraphQL
 
 (defn q [query-string]
-  (-> system
-      :graphql-example.graphql/schema
-      (lacinia/execute query-string nil nil)))
+  (lacinia/execute (:graphql-example.graphql/schema system)
+                   query-string
+                   nil
+                   {:db (:graphql-example.boundary.db.example-db/db system)}))
 
 (defn simplify [m]
   (walk/postwalk
