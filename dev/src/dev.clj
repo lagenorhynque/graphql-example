@@ -14,7 +14,8 @@
             [integrant.core :as ig]
             [integrant.repl :refer [clear halt go init prep]]
             [integrant.repl.state :refer [config system]]
-            [orchestra.spec.test :as stest])
+            [orchestra.spec.test :as stest]
+            [venia.core :as venia])
   (:import (clojure.lang IPersistentMap)))
 
 (duct/load-hierarchy)
@@ -39,11 +40,13 @@
 
 ;;; GraphQL
 
-(defn q [query-string]
-  (lacinia/execute (:graphql-example.graphql/schema system)
-                   query-string
-                   nil
-                   {:db (:graphql-example.boundary.db.example-db/db system)}))
+(defn q
+  ([query] (q query nil))
+  ([query variables]
+   (lacinia/execute (:graphql-example.graphql/schema system)
+                    (venia/graphql-query query)
+                    variables
+                    {:db (:graphql-example.boundary.db.example-db/db system)})))
 
 (defn simplify [m]
   (walk/postwalk
