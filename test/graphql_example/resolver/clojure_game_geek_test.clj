@@ -13,14 +13,14 @@
     (let [{:keys [status body]}
           (helper/http-post sys "/graphql"
                             (venia/graphql-query
-                             {:venia/queries [[:member_by_id {:id "1410"}
-                                               [:member_name
-                                                [:ratings [[:game [:name
-                                                                   [:rating_summary [:count
-                                                                                     :average]]
-                                                                   [:designers [:name
-                                                                                [:games [:name]]]]]]
-                                                           :rating]]]]]}))]
+                             #:venia{:queries [[:member_by_id {:id "1410"}
+                                                [:member_name
+                                                 [:ratings [[:game [:name
+                                                                    [:rating_summary [:count
+                                                                                      :average]]
+                                                                    [:designers [:name
+                                                                                 [:games [:name]]]]]]
+                                                            :rating]]]]]}))]
       (t/is (= 200 status))
       (t/is (= {:data {:member_by_id {:member_name "bleedingedge"
                                       :ratings [{:game {:name "Zertz"
