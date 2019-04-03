@@ -12,9 +12,9 @@
                  [honeysql "0.9.4"]
                  [io.pedestal/pedestal.jetty "0.5.5"]
                  [io.pedestal/pedestal.service "0.5.5"]
-                 [mysql/mysql-connector-java "8.0.14"]
+                 [mysql/mysql-connector-java "8.0.15"]
                  [org.clojure/clojure "1.10.0"]]
-  :plugins [[duct/lein-duct "0.11.2"]]
+  :plugins [[duct/lein-duct "0.12.0"]]
   :middleware [lein-duct.plugin/middleware]
   :main ^:skip-aot graphql-example.main
   :resource-paths ["resources" "target/resources"]
@@ -32,9 +32,9 @@
                   :dependencies   [[clj-http "3.9.1"]
                                    [com.bhauman/rebel-readline "0.1.4"]
                                    [com.gearswithingears/shrubbery "0.4.1"]
-                                   [eftest "0.5.4"]
+                                   [eftest "0.5.7"]
                                    [integrant/repl "0.3.1" :exclusions [integrant]]
-                                   [orchestra "2018.12.06-2"]
+                                   [orchestra "2019.02.06-1"]
                                    [pjstadig/humane-test-output "0.9.0"]
                                    [vincit/venia "0.2.5"]]
                   :aliases {"rebel" ^{:doc "Run REPL with rebel-readline."}
