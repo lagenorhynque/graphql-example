@@ -1,12 +1,13 @@
 (ns graphql-example.test-helper.core
-  (:require [cheshire.core :as cheshire]
-            [clj-http.client :as client]
-            [clojure.java.io :as io]
-            [clojure.spec.alpha :as s]
-            [duct.core :as duct]
-            [graphql-example.util.core :as util]
-            [integrant.core :as ig]
-            [orchestra.spec.test :as stest]))
+  (:require
+   [cheshire.core :as cheshire]
+   [clj-http.client :as client]
+   [clojure.java.io :as io]
+   [clojure.spec.alpha :as s]
+   [duct.core :as duct]
+   [graphql-example.util.core :as util]
+   [integrant.core :as ig]
+   [orchestra.spec.test :as stest]))
 
 (duct/load-hierarchy)
 
@@ -25,7 +26,7 @@
 
 (s/fdef with-system
   :args (s/cat :binding (s/coll-of any?
-                                   :kind vector
+                                   :kind vector?
                                    :count 2)
                :body (s/* any?)))
 
